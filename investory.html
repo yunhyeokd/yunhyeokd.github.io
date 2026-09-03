@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investory | 도윤혁 Portfolio</title>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored === "light" || stored === "dark") {
+            document.documentElement.setAttribute("data-theme", stored);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="detail.css" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="nav-name" href="index.html#top">도윤혁</a>
+        <div class="nav-links">
+          <a href="index.html#contact">연락처</a>
+          <a href="index.html#about">소개</a>
+          <a href="index.html#skills">기술 스택</a>
+          <a href="index.html#projects">프로젝트</a>
+          <a href="index.html#learning">학습 중</a>
+          <a href="index.html#career">경력</a>
+          <a href="index.html#education">학력·자격</a>
+        </div>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="테마 전환"
+        >
+          <svg
+            class="icon-sun"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="12" y1="2" x2="12" y2="4"></line>
+            <line x1="12" y1="20" x2="12" y2="22"></line>
+            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+            <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+            <line x1="2" y1="12" x2="4" y2="12"></line>
+            <line x1="20" y1="12" x2="22" y2="12"></line>
+            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+            <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+          </svg>
+          <svg
+            class="icon-moon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <a class="back-link" href="index.html#projects">← 프로젝트 목록</a>
+
+      <div class="case-study">
+        <div class="wrap">
+          <header class="hero">
+            <p class="kicker">프로젝트 수행 내용 · Backend / Infra</p>
+            <h1>Investory</h1>
+            <p class="tagline">
+              투자 기록을 바탕으로 나만의 투자 원칙을 도출하고, 투자봇
+              시뮬레이션으로 검증하는 AI 투자 일지 서비스입니다. 백엔드 개발과
+              함께 Git 저장소·브랜치 관리, GCP 인프라 운영을 담당했습니다.
+            </p>
+
+            <dl class="meta">
+              <div>
+                <dt>기간</dt>
+                <dd>2026.07 – 08 (5주)</dd>
+              </div>
+              <div>
+                <dt>담당</dt>
+                <dd>백엔드 · 인프라</dd>
+              </div>
+              <div class="meta-stack">
+                <dt>스택</dt>
+                <dd>
+                  <div class="stack-group">
+                    <span class="stack-cat">Backend</span>
+                    <div class="tags">
+                      <span class="tag">Java 17</span>
+                      <span class="tag">Spring MVC</span>
+                      <span class="tag">MyBatis</span>
+                    </div>
+                  </div>
+                  <div class="stack-group">
+                    <span class="stack-cat">Simulation</span>
+                    <div class="tags">
+                      <span class="tag">FastAPI</span>
+                    </div>
+                  </div>
+                  <div class="stack-group">
+                    <span class="stack-cat">Database</span>
+                    <div class="tags">
+                      <span class="tag">MySQL</span>
+                    </div>
+                  </div>
+                  <div class="stack-group">
+                    <span class="stack-cat">Infra</span>
+                    <div class="tags">
+                      <span class="tag">GCP</span>
+                      <span class="tag">Terraform</span>
+                    </div>
+                  </div>
+                  <div class="stack-group">
+                    <span class="stack-cat">Test</span>
+                    <div class="tags">
+                      <span class="tag">k6</span>
+                    </div>
+                  </div>
+                </dd>
+              </div>
+            </dl>
+          </header>
+
+          <section id="env">
+            <div class="shead">
+              <span class="snum">01</span>
+              <h2>개발 환경 구축</h2>
+            </div>
+
+            <div class="blk">
+              <span class="tag">외부 의존 제거</span>
+              <h3>가상 증권사 서버 구축</h3>
+              <p>
+                마이데이터 API에 접근할 수 없어
+                <strong
+                  >마이데이터 금융투자 업권 정보제공 규격(FSAG0402)을 모방한
+                  증권사 서버</strong
+                >를 별도 서비스로 구축했습니다. 매수/매도 주문, 시나리오에 따른
+                유저 거래내역 자동 생성 등 메인 서비스 기능 테스트를 위한 콘솔을
+                함께 구현했습니다.
+              </p>
+              <ul class="l">
+                <li>
+                  계좌 · 거래내역 · 보유종목 조회 API와 매수 · 매도 주문 처리 —
+                  주문이 새 거래로 본 서비스에 반영되는 경로까지 포함
+                </li>
+                <li>
+                  과거 실시세를 기반으로 거래 이력을 생성하는
+                  <strong>시나리오 생성기</strong>와, 이를 특정 사용자에게
+                  적용하는 관제 콘솔
+                </li>
+              </ul>
+              <p>
+                외부 기관을 대체하는 서버를 직접 운용한 덕분에 1000명 동시 계좌
+                연동 같은 시나리오를 임의로 구성할 수 있었습니다.
+              </p>
+            </div>
+
+            <div class="blk">
+              <span class="tag">스키마 · 데이터</span>
+              <h3>마이그레이션과 시드 파이프라인 분리</h3>
+              <p>
+                DB 마이그레이션을 Flyway로 관리하고, 실시간성을 가지는 시드
+                데이터를 입력하는 스크립트를 작성해 시드 파이프라인을
+                구축했습니다. 이를 통해 부하테스트 환경을 새로 구성할 때마다
+                스크립트로 종목 데이터를 재현할 수 있었습니다.
+              </p>
+              <ul class="l">
+                <li>
+                  Flyway 마이그레이션을
+                  <strong>서비스 레포와 분리된 독립 프로젝트</strong>로 운영하고
+                  GitHub Actions로 실행을 워크플로우화
+                </li>
+                <li>
+                  KIS에서 주식종목 마스터를 받아 시총 상위 종목을 선정한 뒤 일별
+                  시세까지 채우는
+                  <strong>재실행 안전한 시드 스크립트</strong>를 별도 작성
+                </li>
+              </ul>
+            </div>
+
+            <div class="blk">
+              <span class="tag">배포</span>
+              <h3>CI/CD 파이프라인 구성</h3>
+              <p>
+                main 브랜치에 대한 GitHub Actions 워크플로를 구성해, 빌드한
+                이미지를 GHCR에 등록하고 GCP VM에서
+                <code>docker compose</code>로 교체 배포하도록 파이프라인을
+                구축했습니다.
+              </p>
+            </div>
+          </section>
+
+          <section id="feature">
+            <div class="shead">
+              <span class="snum">02</span>
+              <h2>기능 구현</h2>
+            </div>
+            <p class="sdesc">
+              7개 도메인을 기능 단위로 분리하고, 각 기능마다 도메인 · 인프라 ·
+              프레젠테이션 계층을 두어 도메인이 인터페이스를 선언하면 인프라가
+              구현하는 방향으로만 의존하도록 구성했습니다.
+            </p>
+
+            <div class="tw">
+              <table>
+                <thead>
+                  <tr>
+                    <th>도메인</th>
+                    <th>구현 내용</th>
+                    <th>담당</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>ledger</strong></td>
+                    <td>
+                      거래내역 · 보유현황 적재와 조회, 매수-매도 선입선출 매칭
+                      계산
+                    </td>
+                    <td class="s">전 계층 단독</td>
+                  </tr>
+                  <tr>
+                    <td><strong>journal</strong></td>
+                    <td>
+                      투자일지 CRUD, 종목별 거래 타임라인, 매수 근거 라벨링(LLM
+                      API 호출)
+                    </td>
+                    <td class="s">전 계층 단독</td>
+                  </tr>
+                  <tr>
+                    <td><strong>market</strong></td>
+                    <td>
+                      종목 검색과 상세, 시세 동기화 스케줄러, 시세 벤더 결합
+                      제거 리팩터링
+                    </td>
+                    <td class="s">전 계층 단독</td>
+                  </tr>
+                  <tr>
+                    <td><strong>broker</strong></td>
+                    <td>계좌 조회 · 수정, 증권사 동기화 배치, 연동 해지</td>
+                    <td class="s">팀원과 분담</td>
+                  </tr>
+                  <tr>
+                    <td><strong>tendency</strong></td>
+                    <td>
+                      성향분석 6개 차원 중 3개(수익 대응 · 위험배분 · 원칙
+                      이행), 실행 영속화
+                    </td>
+                    <td class="s">팀원과 분담</td>
+                  </tr>
+                  <tr>
+                    <td><strong>principle</strong></td>
+                    <td>
+                      투자원칙 조회 · 저장 · 추천, 추천 문구 생성(LLM API 호출)
+                    </td>
+                    <td class="s">전 계층 단독</td>
+                  </tr>
+                  <tr>
+                    <td><strong>notification</strong></td>
+                    <td>
+                      알림 목록 · 상세 · 읽음처리 · 미읽음수, 가입/탈퇴 시 설정
+                      연동
+                    </td>
+                    <td class="s">전 계층 단독</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              도메인 간 연결은 직접 호출 대신
+              <strong>이벤트 발행과 포트 인터페이스</strong>로 처리했습니다.
+              성향분석 완료 시 이벤트를 발행하면 원칙 추천과 알림이 각각
+              구독합니다. 이 구조 덕분에 분석 처리를 백그라운드 워커로 이전할 때
+              구독 측 변경 없이 발행 시점만 옮기면 됐습니다.
+            </p>
+          </section>
+
+          <section id="perf">
+            <div class="shead">
+              <span class="snum">03</span>
+              <h2>성능 검증 및 개선</h2>
+            </div>
+            <p class="sdesc">
+              부하테스트 환경을 구축하고, 측정으로 병목을 특정하고, 구조를
+              변경한 뒤 재측정하는 순서로 백엔드와 시뮬레이션 서버를 검증했습니다.
+            </p>
+
+            <div class="blk">
+              <span class="tag">3-1 측정 환경</span>
+              <h3>부하테스트 환경 구축</h3>
+              <p>
+                백엔드와 목 증권사 두 서비스에 걸친 시나리오라 어느 레포에도
+                속하지 않는 <strong>독립 프로젝트</strong>로 구성했습니다. k6
+                시나리오 3종(계좌 연동 / 성향분석 / 시뮬레이션)과, 계정 N명 생성
+                · 거래 이력 생성 · 토큰 발급을 처리하는 프로비저닝 스크립트로
+                이루어집니다.
+              </p>
+              <ul class="l">
+                <li>
+                  <strong>실행 환경 2종</strong> — 로컬 Docker 격리 환경(반복
+                  측정용)과, 프로덕션과 동일한 VM 머신타입 · Cloud SQL 티어를
+                  Terraform으로 구성한 GCP 환경(로컬 자원 제약과 외부 네트워크
+                  경로를 결과에서 배제)
+                </li>
+                <li>
+                  <strong>공유 DB 격리</strong> — 팀 운영 DB를 가리키는 설정
+                  파일을 어떤 스크립트도 수정하지 않는다는 제약을 두고, 컨테이너
+                  환경변수 우선순위와 부분 오버라이드만으로 격리를 구현
+                </li>
+                <li>
+                  <strong>콜드스타트 노이즈 제거</strong> — 서버 기동 직후
+                  부하를 가하면 서버 로그에는 기록이 없는데 응답만 끊겼습니다.
+                  DB에는 처리가 완료돼 있어 콜드스타트 아티팩트로 판정하고,
+                  워밍업 단계를 파이프라인에 추가
+                </li>
+                <li>
+                  <strong>무증상 실패 확인</strong> — 종목 시드가 없으면 거래가
+                  예외 없이 스킵되고 배치 상태는 성공으로 남습니다. 응답의
+                  적재/스킵 건수로만 드러나므로 시드를 필수 단계로 승격
+                </li>
+                <li>
+                  <strong>관측</strong> — 커넥션 풀 상태 로깅, InfluxDB +
+                  Grafana 대시보드, 시뮬레이션 서버 Prometheus 메트릭 노출
+                </li>
+              </ul>
+              <div class="key">
+                <span class="lb">병목 주체 판별</span>
+                <p>
+                  계좌 연동 p95가 5.25초로 상승했을 때, 인증된 커넥션을
+                  재사용하는 재동기화는 108ms를 유지했습니다. 이 차이로
+                  <strong
+                    >병목이 본 서비스가 아니라 목 서버의 비밀번호 검증(CPU
+                    바운드)</strong
+                  >임을 특정했습니다.
+                </p>
+              </div>
+            </div>
+
+            <div class="blk">
+              <span class="tag">3-2 구조 전환</span>
+              <h3>설정 튜닝의 한계를 확인한 뒤 구조를 변경</h3>
+              <p>
+                1000명 동시 요청에서 에러율 15.10%, p95 25.71초로 시작했습니다.
+                설정을 한 단계씩 조정하며 원인 후보를 배제해나갔습니다.
+              </p>
+              <div class="tw">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>단계</th>
+                      <th>에러율</th>
+                      <th>p95</th>
+                      <th>판정</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="s">최초 측정</td>
+                      <td class="n"><span class="pill b">15.10%</span></td>
+                      <td class="n">25.71s</td>
+                      <td class="s">데드락 286건 + 실행기 큐 포화</td>
+                    </tr>
+                    <tr>
+                      <td class="s">큐 포화 가드 추가</td>
+                      <td class="n"><span class="pill g">0.00%</span></td>
+                      <td class="n">23.91s</td>
+                      <td class="s">에러는 해소, 지연은 동일</td>
+                    </tr>
+                    <tr>
+                      <td class="s">커넥션 풀 10 → 30</td>
+                      <td class="n">0.00%</td>
+                      <td class="n">14.87s</td>
+                      <td class="s">풀 3배 대비 개선 40%</td>
+                    </tr>
+                    <tr>
+                      <td class="s">디스크 동기화 설정 완화</td>
+                      <td class="n">0.00%</td>
+                      <td class="n">12.27s</td>
+                      <td class="s">변화 미미 → <strong>원인 아님</strong></td>
+                    </tr>
+                    <tr>
+                      <td class="s">CPU 사용률 확인</td>
+                      <td class="n">—</td>
+                      <td class="n">—</td>
+                      <td class="s">
+                        11코어 중 6.4코어 사용 → <strong>원인 아님</strong>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="s">스레드 수 실측</td>
+                      <td class="n">—</td>
+                      <td class="n">—</td>
+                      <td class="s">
+                        활성 워커 스레드 <strong>정확히 200개</strong> = Tomcat
+                        기본값
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                원인은 구조였습니다. 분석 API가 6개 차원 계산과 외부 호출, DB
+                쓰기를 <strong>요청 스레드에서 동기로 처리</strong>했습니다(평균
+                9~13초). 스레드 수를 늘리면 대기가 분산될 뿐 요청 하나의 처리
+                시간은 줄지 않습니다.
+              </p>
+              <div class="key">
+                <span class="lb">전환 근거</span>
+                <p>
+                  커넥션 풀을 3배로 늘렸을 때 개선이 40%에 그친 불일치가 판단
+                  근거였습니다.
+                  <strong
+                    >자원을 늘려도 비례해 개선되지 않으면 병목이 자원이
+                    아닙니다.</strong
+                  >
+                  이 지점에서 설정 조정을 중단하고 구조를 검토했습니다.
+                </p>
+              </div>
+              <h4>조치와 재측정</h4>
+              <ul class="l">
+                <li>
+                  동기 201 응답을 <strong>202 + job id + 폴링</strong> 패턴으로
+                  전환하고 계산을 백그라운드 워커로 이전. 워커 풀 크기를 DB 처리
+                  능력 기준으로 별도 관리하게 되면서
+                  <strong
+                    >클라이언트 동시 요청 수에 직접 좌우되지 않는 구조</strong
+                  >가 됐습니다
+                </li>
+                <li>
+                  상태 컬럼과 중복 실행 가드를 추가. 이때
+                  <strong
+                    >기본값이 기존 이력 전체에 소급 적용되면 새 가드가 기존
+                    사용자 전원을 영구 차단</strong
+                  >한다는 점을 배포 전에 확인해, 결과 존재 여부로 백필하도록
+                  마이그레이션을 수정
+                </li>
+                <li>
+                  재측정 결과 <strong>1000/1000 접수 · 1000/1000 완료</strong>.
+                  완료까지 p95는 36.3초로 목표(3s) 미달
+                </li>
+                <li>
+                  추가 분석에서 종목당 시세를 순차 조회하는 N+1을 확인 — 요청
+                  하나가 <strong>최대 60회의 순차 DB 왕복</strong>. 배치 조회를
+                  추가해 <code>IN</code>절 1회로 대체하고, 두 분석 항목이 결과를
+                  공유하도록 해 중복 조회도 제거
+                </li>
+              </ul>
+            </div>
+
+            <div class="blk">
+              <span class="tag">3-3 런타임 특성</span>
+              <h3>시뮬레이션 서버 — async 전환 폐기, 멀티프로세스 채택</h3>
+              <p>
+                커넥션 풀 문제를 해결해 연결 실패는 0건이 됐으나, 50명 동시
+                요청에서 몬테카를로 500회가
+                <strong>1.98초에서 16.71초로 8~10배</strong> 느려졌습니다. DB가
+                관여하지 않는 순수 CPU 구간이라 GIL 경합을 원인으로 가정하고 두
+                방향을 측정했습니다.
+              </p>
+              <div class="tw">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>구성</th>
+                      <th>submit p95</th>
+                      <th>완료 평균</th>
+                      <th>판정</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="s">기준선 (단일 프로세스)</td>
+                      <td class="n">1.17s</td>
+                      <td class="n">7~9s</td>
+                      <td class="s">—</td>
+                    </tr>
+                    <tr>
+                      <td class="s">CPU 구간 프로세스 풀 오프로드</td>
+                      <td class="n">23.45s</td>
+                      <td class="n">—</td>
+                      <td class="s">43.27s 대비 완화, 코어 수 내 최적화</td>
+                    </tr>
+                    <tr>
+                      <td class="s">DB 계층 전체 async 전환</td>
+                      <td class="n"><span class="pill b">1.73s</span></td>
+                      <td class="n">—</td>
+                      <td class="s"><strong>기준선보다 악화 → 폐기</strong></td>
+                    </tr>
+                    <tr>
+                      <td class="s">멀티프로세스 (풀 미조정)</td>
+                      <td class="n"><span class="pill w">1.5~1.72s</span></td>
+                      <td class="n">7~11.5s</td>
+                      <td class="s">오버섭스크립션으로 악화</td>
+                    </tr>
+                    <tr>
+                      <td class="s">멀티프로세스 + 풀 재배분</td>
+                      <td class="n"><span class="pill g">0.93s</span></td>
+                      <td class="n"><span class="pill g">6.32s</span></td>
+                      <td class="s">측정한 구성 중 최고</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h4>async가 느렸던 이유</h4>
+              <p>
+                이벤트 루프는 프로세스당 스레드 하나입니다. 결과셋 파싱 같은
+                <strong
+                  >CPU 바운드 작업이 그 한 스레드에 집중돼 순차 처리</strong
+                >됐습니다. 스레드 모델은 GIL 경쟁 비용이 있어도 일부는 여러
+                코어에 분산되는데, async는 그 여지를 제거합니다.
+                <strong
+                  >I/O와 CPU가 혼재한 워크로드에서는 async가 스레드 모델보다
+                  불리할 수 있다</strong
+                >는 것을 측정으로 확인했습니다.
+              </p>
+              <h4>전환 과정에서 확인한 문제</h4>
+              <ul class="l">
+                <li>
+                  동기 코드를 스레드로 넘기는 브릿지가 이벤트 루프 스레드와
+                  경합해 <strong>응답 자체가 나가지 않는 락업</strong> 발생(전원
+                  타임아웃)
+                </li>
+                <li>
+                  async 드라이버는 커넥션 반납 시 자동 롤백을 수행하지 않아,
+                  재사용된 커넥션이 오래된 트랜잭션 스냅샷을 유지했습니다.
+                  직전에 생성한 계좌 연동이 조회되지 않아
+                  <strong>84%가 조회 실패</strong>. 커밋 모드 변경으로 해결
+                </li>
+                <li>
+                  워커 풀 설정이 모두 프로세스 단위 값이라 프로세스 4개 구성에서
+                  <strong>4배로 곱해집니다</strong>. 코어 수를 프로세스 수로
+                  나눠 배분한 뒤에야 최고 성능이 나왔습니다
+                </li>
+                <li>
+                  멀티프로세스의 선행 조건인 배치 스케줄러 중복 실행을
+                  <strong>DB 락으로 단일 프로세스만 실행</strong>하도록 정리
+                </li>
+              </ul>
+              <p>
+                폐기한 async 브랜치는 머지하지 않고 기록용으로 남기고, 이슈에
+                이전 결론을 뒤집는다는 사실과 측정값을 함께 기록해 같은 시도가
+                반복되지 않도록 했습니다.
+              </p>
+            </div>
+
+            <div class="blk">
+              <span class="tag">3-4 DB 동시성</span>
+              <h3>원인이 서로 다른 데드락 3건</h3>
+              <ul class="l">
+                <li>
+                  <strong>재시도 부재</strong> — 거래매칭 저장이 데드락 발생 시
+                  재시도 없이 실패. 재시도를 추가했으나 그것만으로는 해소되지
+                  않았습니다
+                </li>
+                <li>
+                  <strong>수정이 만든 역효과</strong> — 재검증에서 실패율이
+                  <span class="pill b">16.5% → 43%</span>로 악화. 직전에 도입한
+                  제한 크기 실행기 2개의 큐 포화와,
+                  <strong>스케줄러 병렬화가 동시 쓰기 경합을 증가시킨 것</strong
+                  >이 원인이었습니다
+                </li>
+                <li>
+                  <strong>테스트 데이터 구성</strong> — 테스트 종목이 6종뿐이라
+                  저카디널리티 인덱스에 쓰기가 집중돼 데드락이 증폭됐습니다.
+                  30종목으로 확대해 쓰기를 분산. 테스트 데이터 구성이 측정
+                  결과에 직접 영향을 준 사례입니다
+                </li>
+                <li>
+                  <strong>락 범위</strong> — DELETE가 계좌와 무관하게 종목 단위
+                  락을 획득해 서로 다른 계좌의 동시 동기화가 충돌 → 계좌 범위로
+                  축소
+                </li>
+                <li>
+                  <strong>갭락</strong> — INSERT가 REPEATABLE READ의 supremum
+                  갭락으로 데드락 → 해당 서비스의 격리 수준을 READ COMMITTED로
+                  조정해 해소
+                </li>
+              </ul>
+            </div>
+
+            <div class="blk">
+              <span class="tag">3-5 트랜잭션</span>
+              <h3>트랜잭션 범위 축소</h3>
+              <ul class="l">
+                <li>
+                  동기화 트랜잭션이
+                  <strong>외부 서버 호출을 범위 안에 포함</strong>해 락 대기
+                  타임아웃 발생 → 조회는 트랜잭션 밖으로, 쓰기만 별도
+                  트랜잭션으로 분리하고 동시 요청 가드를 추가
+                </li>
+                <li>
+                  최초 연동 시 거래 · 보유 적재를 건별에서
+                  <strong>배치 처리</strong>로 전환
+                </li>
+                <li>
+                  비동기 리스너가 <strong>무제한 스레드 생성 실행기</strong>로
+                  동작하던 것을 제한 크기 풀로 교체하고, 큐 포화 시 호출자에게
+                  예외가 전파되지 않도록 가드 패턴 적용
+                </li>
+              </ul>
+            </div>
+
+            <h3>종합 결과</h3>
+            <div class="tw">
+              <table>
+                <thead>
+                  <tr>
+                    <th>항목</th>
+                    <th>이전</th>
+                    <th>이후</th>
+                    <th>측정 조건</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>성향분석 에러율</td>
+                    <td class="n">15.10%</td>
+                    <td class="n"><span class="pill g">0.00%</span></td>
+                    <td class="s">1000 VU</td>
+                  </tr>
+                  <tr>
+                    <td>성향분석 요청 응답</td>
+                    <td class="n">동기 9~13s</td>
+                    <td class="n"><span class="pill g">즉시 202</span></td>
+                    <td class="s">job + 폴링 전환</td>
+                  </tr>
+                  <tr>
+                    <td>성향분석 처리 성공</td>
+                    <td class="n">—</td>
+                    <td class="n">1000 / 1000</td>
+                    <td class="s">1000 VU 버스트 전량</td>
+                  </tr>
+                  <tr>
+                    <td>시세 조회 왕복</td>
+                    <td class="n">최대 60회 순차</td>
+                    <td class="n"><span class="pill g">1회 배치</span></td>
+                    <td class="s">요청 1건 기준</td>
+                  </tr>
+                  <tr>
+                    <td>시뮬레이션 submit p95</td>
+                    <td class="n">1.17s</td>
+                    <td class="n"><span class="pill g">0.93s</span></td>
+                    <td class="s">50 VU</td>
+                  </tr>
+                  <tr>
+                    <td>시뮬레이션 완료 평균</td>
+                    <td class="n">7~9s</td>
+                    <td class="n"><span class="pill g">6.32s</span></td>
+                    <td class="s">50 VU</td>
+                  </tr>
+                  <tr>
+                    <td>DB 연결 실패</td>
+                    <td class="n">다수</td>
+                    <td class="n"><span class="pill g">0건</span></td>
+                    <td class="s">커넥션 풀 + 조기 반납</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="memo">
+              <span class="lb">측정 조건</span>
+              <p>
+                위 수치는 전부 <strong>로컬 11코어 격리 환경 기준</strong>입니다.
+                배포 대상 VM은 코어 수가 적어 동일한 개선폭이 재현되지 않으며,
+                워커 풀 구성은 배포 스펙 기준으로 재측정이 필요합니다.
+              </p>
+            </div>
+
+            <h3>남은 과제</h3>
+            <ul class="l">
+              <li>
+                성향분석 완료까지의 p95를 목표치까지 낮추는 작업 — N+1 해소 이후
+                재측정 미완
+              </li>
+              <li>
+                멀티프로세스 워커 수와 각 풀 크기를 배포 스펙 기준으로 확정 —
+                현재는 수동 조정이라 회귀 여지가 있습니다
+              </li>
+              <li>
+                목 증권사의 비밀번호 검증 병목은 테스트 전용 서버의 특성이므로
+                실서비스 용량과 무관할 수 있어, 근본 원인 확정은 보류
+              </li>
+            </ul>
+          </section>
+
+          <footer class="cs-footer">
+            Investory · kb-investory · 2026.07 – 08<br />
+            기재된 수치는 모두 부하테스트 이슈 · PR에 기록된 실측값이며,
+            프론트엔드 작업은 이 문서에서 제외했습니다.
+          </footer>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2>저장소</h2>
+        <div class="project-repos">
+          <a
+            href="https://github.com/kb-investory/investory-backend"
+            target="_blank"
+            rel="noopener"
+            >investory-backend</a
+          >
+          <a
+            href="https://github.com/kb-investory/investory-simulation-api"
+            target="_blank"
+            rel="noopener"
+            >investory-simulation-api</a
+          >
+          <a
+            href="https://github.com/kb-investory/investory-mock-broker"
+            target="_blank"
+            rel="noopener"
+            >investory-mock-broker</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 도윤혁</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

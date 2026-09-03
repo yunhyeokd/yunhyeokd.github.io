@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>도윤혁 | Portfolio</title>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored === "light" || stored === "dark") {
+            document.documentElement.setAttribute("data-theme", stored);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="nav-name" href="#top">도윤혁</a>
+        <div class="nav-links">
+          <a href="#contact">연락처</a>
+          <a href="#about">소개</a>
+          <a href="#skills">기술 스택</a>
+          <a href="#projects">프로젝트</a>
+          <a href="#learning">학습 중</a>
+          <a href="#career">경력</a>
+          <a href="#education">학력·자격</a>
+        </div>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="테마 전환"
+        >
+          <svg
+            class="icon-sun"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="12" y1="2" x2="12" y2="4"></line>
+            <line x1="12" y1="20" x2="12" y2="22"></line>
+            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+            <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+            <line x1="2" y1="12" x2="4" y2="12"></line>
+            <line x1="20" y1="12" x2="22" y2="12"></line>
+            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+            <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+          </svg>
+          <svg
+            class="icon-moon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="top" class="hero">
+        <p class="hero-eyebrow">Backend Developer</p>
+        <h1>도윤혁</h1>
+        <p class="hero-desc">
+          Java·Kotlin과 Spring을 중심으로 백엔드를 설계하고,<br />필요한 경우
+          모바일·인프라 영역까지 함께 다룹니다.
+        </p>
+      </section>
+
+      <section id="contact" class="section">
+        <h2>연락처</h2>
+        <ul class="contact-list">
+          <li>
+            <span>Email</span
+            ><a href="mailto:yunhyeokd@gmail.com">yunhyeokd@gmail.com</a>
+          </li>
+          <li>
+            <span>GitHub</span
+            ><a
+              href="https://github.com/yunhyeokd"
+              target="_blank"
+              rel="noopener"
+              >github.com/yunhyeokd</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section id="about" class="section">
+        <h2>소개</h2>
+        <p>
+          여러 팀 프로젝트에서 API 서버 설계와 백엔드 아키텍처를 맡아왔습니다.
+          개발 외에도 Git 저장소·브랜치 전략 관리, GCP 인프라 운영까지 함께
+          담당하며 프로젝트 전반의 흐름을 이해하려고 합니다. 최근에는 AI
+          에이전트가 참조할 프로젝트 컨텍스트를 관리하는 MCP 서버를 직접
+          만들어보는 등, 개발 도구 자체에도 관심을 두고 있습니다.
+        </p>
+      </section>
+
+      <section id="skills" class="section">
+        <h2>기술 스택</h2>
+
+        <div class="skill-group">
+          <h3>Backend</h3>
+          <div class="tags">
+            <span class="tag">Java</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">Spring</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Frontend</h3>
+          <div class="tags">
+            <span class="tag">Vue</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Database / Infra</h3>
+          <div class="tags">
+            <span class="tag">MySQL</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Docker</span>
+            <span class="tag">GCP</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <h2>프로젝트</h2>
+
+        <article class="project">
+          <p class="project-origin">KB IT's Your Life 7기 최종 프로젝트</p>
+          <div class="project-head">
+            <h3>Investory</h3>
+            <span class="project-period">2026.07 – 2026.08 · 종료</span>
+          </div>
+          <p class="project-desc">
+            투자 기록을 바탕으로 나만의 투자 원칙을 도출하고, 투자봇
+            시뮬레이션으로 검증하는 AI 투자 일지 서비스입니다. 백엔드 개발과
+            함께 Git 저장소·브랜치 관리, GCP 인프라 운영을 담당했습니다.
+          </p>
+          <div class="tags">
+            <span class="tag">Java</span>
+            <span class="tag">Spring</span>
+            <span class="tag">Python</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Docker</span>
+            <span class="tag">GCP</span>
+          </div>
+          <div class="project-repos">
+            <a
+              href="https://github.com/kb-investory/investory-backend"
+              target="_blank"
+              rel="noopener"
+              >investory-backend</a
+            >
+            <a
+              href="https://github.com/kb-investory/investory-simulation-api"
+              target="_blank"
+              rel="noopener"
+              >investory-simulation-api</a
+            >
+            <a
+              href="https://github.com/kb-investory/investory-mock-broker"
+              target="_blank"
+              rel="noopener"
+              >investory-mock-broker</a
+            >
+          </div>
+          <a class="project-more" href="investory.html">자세히 보기 →</a>
+        </article>
+
+        <article class="project">
+          <p class="project-origin">개인 프로젝트</p>
+          <div class="project-head">
+            <h3>Dozy Coffee</h3>
+            <span class="project-period">2026.08 – 진행 중</span>
+          </div>
+          <p class="project-desc">
+            카페 메뉴·재고 관리 시스템입니다. 도메인을 애그리거트 단위로
+            설계하며 구현하고 있습니다.
+          </p>
+          <div class="tags">
+            <span class="tag">Kotlin</span>
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Spring WebFlux</span>
+          </div>
+          <div class="project-repos">
+            <a
+              href="https://github.com/dozycoffee/dozy-catalog-api"
+              target="_blank"
+              rel="noopener"
+              >dozy-catalog-api</a
+            >
+          </div>
+          <a class="project-more" href="dozy-coffee.html">자세히 보기 →</a>
+        </article>
+      </section>
+
+      <section id="learning" class="section">
+        <h2>학습 중</h2>
+        <div class="tags">
+          <span class="tag">MSA</span>
+          <span class="tag">MCP</span>
+          <span class="tag">Spring WebFlux</span>
+          <span class="tag">Hexagonal Architecture</span>
+          <span class="tag">Continuous Deployment</span>
+        </div>
+      </section>
+
+      <section id="career" class="section">
+        <h2>기타 경력</h2>
+        <ul class="career-list">
+          <li class="career-item">
+            <div class="career-head">
+              <h3>KB IT's Your Life 7기</h3>
+              <span class="career-period">2026.03 – 2026.08</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="education" class="section">
+        <h2>학력 &amp; 자격사항</h2>
+
+        <div class="skill-group">
+          <h3>학력</h3>
+          <div class="edu-line">
+            <span>서강대학교 경영학·컴퓨터공학 (졸업)</span>
+            <span class="edu-period">2018.02 – 2025.08</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>자격증</h3>
+          <div class="tags">
+            <span class="tag">정보처리기사 (2026년 1회)</span>
+            <span class="tag">SQL개발자 (제61회)</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 도윤혁</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
