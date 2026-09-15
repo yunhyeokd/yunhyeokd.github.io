@@ -4,6 +4,18 @@
 .case-study .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 0 40px; }
 
 .case-study .hero { padding: 8px 0 0; }
+
+.case-study .empty-state {
+  padding: 120px 0;
+  text-align: center;
+}
+.case-study .empty-state .kicker { display: block; }
+.case-study .empty-state h1 { margin: 0 0 8px; }
+.case-study .empty-state .empty-desc {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
 .case-study .kicker {
   margin: 0 0 8px;
   color: var(--accent);

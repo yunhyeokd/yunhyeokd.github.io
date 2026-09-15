@@ -136,7 +136,29 @@ main {
 }
 
 .hero {
+  display: flex;
+  align-items: center;
+  gap: 28px;
   padding: 88px 0 64px;
+}
+
+.hero-avatar {
+  flex-shrink: 0;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.hero-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%;
+  transform: scale(1.15);
+  transform-origin: 50% 0%;
 }
 
 .hero-eyebrow {
@@ -464,7 +486,8 @@ main {
 /* Responsive */
 
 @media (max-width: 560px) {
-  .hero { padding: 56px 0 40px; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 16px; padding: 56px 0 40px; }
+  .hero-avatar { width: 84px; height: 84px; }
   .hero h1 { font-size: 1.9rem; }
   .nav-links { gap: 14px; }
   .nav-links a { font-size: 0.85rem; }
