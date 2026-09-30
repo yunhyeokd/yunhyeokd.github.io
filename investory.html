@@ -23,69 +23,20 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"
     />
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
   </head>
   <body>
-    <header class="site-header">
-      <nav class="nav">
-        <a class="nav-name" href="index.html#top">도윤혁</a>
-        <div class="nav-links">
-          <a href="index.html#contact">연락처</a>
-          <a href="index.html#about">소개</a>
-          <a href="index.html#skills">기술 스택</a>
-          <a href="index.html#projects">프로젝트</a>
-          <a href="index.html#learning">학습 중</a>
-          <a href="index.html#career">경력</a>
-          <a href="index.html#education">학력·자격</a>
-        </div>
-        <button
-          class="theme-toggle"
-          id="themeToggle"
-          type="button"
-          aria-label="테마 전환"
-        >
-          <svg
-            class="icon-sun"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="12" cy="12" r="4"></circle>
-            <line x1="12" y1="2" x2="12" y2="4"></line>
-            <line x1="12" y1="20" x2="12" y2="22"></line>
-            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
-            <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
-            <line x1="2" y1="12" x2="4" y2="12"></line>
-            <line x1="20" y1="12" x2="22" y2="12"></line>
-            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
-            <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
-          </svg>
-          <svg
-            class="icon-moon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-      </nav>
-    </header>
+    <site-header></site-header>
 
     <main>
-      <a class="back-link" href="index.html#projects">← 프로젝트 목록</a>
-
       <div class="case-study">
         <div class="wrap">
-          <header class="hero">
-            <p class="kicker">프로젝트 수행 내용 · Backend / Infra</p>
+          <header class="hero band">
+            <a class="back-link" href="index.html#projects">← 프로젝트 목록</a>
+            <p class="kicker">
+              KB IT's Your Life 7기 최종 프로젝트 · 백엔드 / 인프라
+            </p>
             <h1>Investory</h1>
             <p class="tagline">
               투자 기록을 바탕으로 나만의 투자 원칙을 도출하고, 투자봇
@@ -102,42 +53,42 @@
                 <dt>담당</dt>
                 <dd>백엔드 · 인프라</dd>
               </div>
-              <div class="meta-stack">
-                <dt>스택</dt>
+              <div>
+                <dt>기술</dt>
+                <dd>Java, Spring, MyBatis, FastAPI, MySQL, GCP, k6</dd>
+              </div>
+              <div>
+                <dt>저장소</dt>
                 <dd>
-                  <div class="stack-group">
-                    <span class="stack-cat">Backend</span>
-                    <div class="tags">
-                      <span class="tag">Java 17</span>
-                      <span class="tag">Spring MVC</span>
-                      <span class="tag">MyBatis</span>
-                    </div>
-                  </div>
-                  <div class="stack-group">
-                    <span class="stack-cat">Simulation</span>
-                    <div class="tags">
-                      <span class="tag">FastAPI</span>
-                    </div>
-                  </div>
-                  <div class="stack-group">
-                    <span class="stack-cat">Database</span>
-                    <div class="tags">
-                      <span class="tag">MySQL</span>
-                    </div>
-                  </div>
-                  <div class="stack-group">
-                    <span class="stack-cat">Infra</span>
-                    <div class="tags">
-                      <span class="tag">GCP</span>
-                      <span class="tag">Terraform</span>
-                    </div>
-                  </div>
-                  <div class="stack-group">
-                    <span class="stack-cat">Test</span>
-                    <div class="tags">
-                      <span class="tag">k6</span>
-                    </div>
-                  </div>
+                  <ul class="repo-list">
+                    <li>
+                      <span class="repo-role">백엔드</span>
+                      <a
+                        href="https://github.com/kb-investory/investory-backend"
+                        target="_blank"
+                        rel="noopener"
+                        >investory-backend</a
+                      >
+                    </li>
+                    <li>
+                      <span class="repo-role">시뮬레이션</span>
+                      <a
+                        href="https://github.com/kb-investory/investory-simulation-api"
+                        target="_blank"
+                        rel="noopener"
+                        >investory-simulation-api</a
+                      >
+                    </li>
+                    <li>
+                      <span class="repo-role">가상 증권사</span>
+                      <a
+                        href="https://github.com/kb-investory/investory-mock-broker"
+                        target="_blank"
+                        rel="noopener"
+                        >investory-mock-broker</a
+                      >
+                    </li>
+                  </ul>
                 </dd>
               </div>
             </dl>
@@ -145,7 +96,6 @@
 
           <section id="env">
             <div class="shead">
-              <span class="snum">01</span>
               <h2>개발 환경 구축</h2>
             </div>
 
@@ -215,7 +165,6 @@
 
           <section id="feature">
             <div class="shead">
-              <span class="snum">02</span>
               <h2>기능 구현</h2>
             </div>
             <p class="sdesc">
@@ -301,7 +250,6 @@
 
           <section id="perf">
             <div class="shead">
-              <span class="snum">03</span>
               <h2>성능 검증 및 개선</h2>
             </div>
             <p class="sdesc">
@@ -646,35 +594,9 @@
           </section>
         </div>
       </div>
-
-      <section class="section">
-        <h2>저장소</h2>
-        <div class="project-repos">
-          <a
-            href="https://github.com/kb-investory/investory-backend"
-            target="_blank"
-            rel="noopener"
-            >investory-backend</a
-          >
-          <a
-            href="https://github.com/kb-investory/investory-simulation-api"
-            target="_blank"
-            rel="noopener"
-            >investory-simulation-api</a
-          >
-          <a
-            href="https://github.com/kb-investory/investory-mock-broker"
-            target="_blank"
-            rel="noopener"
-            >investory-mock-broker</a
-          >
-        </div>
-      </section>
     </main>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 도윤혁</p>
-    </footer>
+    <site-footer></site-footer>
 
     <script src="script.js"></script>
   </body>
