@@ -85,6 +85,19 @@
 .case-study ul.l li { position: relative; padding-left: 18px; font-size: 0.94rem; }
 .case-study ul.l li::before { content: "–"; position: absolute; left: 0; color: var(--text-muted); }
 
+/* Architecture diagram — inline SVG themed with the page tokens */
+
+.case-study .arch { margin: 8px 0 24px; }
+.case-study .arch-scroll { overflow-x: auto; }
+.case-study .arch svg { display: block; width: 100%; height: auto; min-width: 520px; max-width: 680px; }
+.case-study .arch-box { fill: var(--code-bg); stroke: var(--line-strong); stroke-width: 1.5; }
+.case-study .arch-box-main { stroke: var(--mark); stroke-width: 2; }
+.case-study .arch-name { fill: var(--text-strong); font-family: var(--mono); font-size: 16px; font-weight: 700; text-anchor: middle; }
+.case-study .arch-desc { fill: var(--text-muted); font-size: 13px; text-anchor: middle; }
+.case-study .arch-edge { stroke: var(--text-muted); stroke-width: 1.5; }
+.case-study .arch-head { fill: var(--text-muted); }
+.case-study .arch figcaption { margin-top: 10px; font-size: 0.85rem; color: var(--text-muted); max-width: 38em; }
+
 /* Tables: rules only, no boxes */
 
 .case-study .tw { overflow-x: auto; margin: 4px 0 18px; }

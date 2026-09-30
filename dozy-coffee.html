@@ -30,16 +30,24 @@
     <site-header></site-header>
 
     <main>
-      <a class="back-link" href="index.html#projects">← 프로젝트 목록</a>
-
       <div class="case-study">
         <div class="wrap">
-          <div class="empty-state">
+          <header class="hero band">
+            <a class="back-link" href="index.html#projects">← 프로젝트 목록</a>
             <p class="kicker">2인 사이드 프로젝트 · 백엔드</p>
             <h1>Dozy Coffee</h1>
-            <p class="empty-desc">아직 작성 중입니다.</p>
+            <p class="tagline">
+              커피 프랜차이즈의 상품·재고·매장·인증을 서비스별로 나눈 MSA
+              프로젝트입니다. 본사가 정의한 상품을 가맹점이 진열하는 Catalog
+              서비스와, 모든 서비스가 쓰는 인증 서비스·라이브러리를 단독으로
+              설계하고 구현했습니다.
+            </p>
 
             <dl class="meta">
+              <div>
+                <dt>기간</dt>
+                <dd>2026.05 – 진행 중</dd>
+              </div>
               <div>
                 <dt>담당</dt>
                 <dd>Catalog · Auth 서비스 (단독)</dd>
@@ -47,6 +55,15 @@
               <div>
                 <dt>팀원</dt>
                 <dd>WMS · 관리자 콘솔</dd>
+              </div>
+              <div>
+                <dt>기술</dt>
+                <dd>
+                  Kotlin, Spring Boot 4.1 (WebFlux · 코루틴)
+                  <span class="sep">·</span> R2DBC, Exposed
+                  <span class="sep">·</span> PostgreSQL 18, Flyway
+                  <span class="sep">·</span> Testcontainers, Konsist
+                </dd>
               </div>
               <div>
                 <dt>저장소</dt>
@@ -64,7 +81,304 @@
                 </dd>
               </div>
             </dl>
-          </div>
+          </header>
+
+          <section id="architecture">
+            <div class="shead">
+              <h2>아키텍처</h2>
+            </div>
+            <p class="sdesc">
+              Catalog는 요구사항의 장 구분에 맞춰 도메인 모듈 네 개로 나누고,
+              모듈마다 안에서 계층을 나눴습니다. 모듈 사이의 의존은 한 방향으로만
+              흐릅니다.
+            </p>
+
+            <figure class="arch">
+              <div class="arch-scroll">
+              <svg viewBox="0 0 680 270" role="img" aria-label="Catalog 모듈 의존 관계: store, schedule, exposure가 product에 의존하고, exposure는 store에도 의존한다">
+                <defs>
+                  <marker id="arch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" class="arch-head" />
+                  </marker>
+                </defs>
+
+                <line x1="125" y1="180" x2="280" y2="88" class="arch-edge" marker-end="url(#arch-arrow)" />
+                <line x1="340" y1="180" x2="340" y2="92" class="arch-edge" marker-end="url(#arch-arrow)" />
+                <line x1="555" y1="180" x2="400" y2="88" class="arch-edge" marker-end="url(#arch-arrow)" />
+                <line x1="470" y1="214" x2="429" y2="214" class="arch-edge" marker-end="url(#arch-arrow)" />
+
+                <g>
+                  <rect x="255" y="20" width="170" height="68" rx="8" class="arch-box arch-box-main" />
+                  <text x="340" y="48" class="arch-name">product</text>
+                  <text x="340" y="70" class="arch-desc">상품 · 옵션 · 카테고리</text>
+                </g>
+                <g>
+                  <rect x="40" y="180" width="170" height="68" rx="8" class="arch-box" />
+                  <text x="125" y="208" class="arch-name">schedule</text>
+                  <text x="125" y="230" class="arch-desc">00시 예약 변경</text>
+                </g>
+                <g>
+                  <rect x="255" y="180" width="170" height="68" rx="8" class="arch-box" />
+                  <text x="340" y="208" class="arch-name">store</text>
+                  <text x="340" y="230" class="arch-desc">매장 진열 · 판매 가능 여부</text>
+                </g>
+                <g>
+                  <rect x="470" y="180" width="170" height="68" rx="8" class="arch-box" />
+                  <text x="555" y="208" class="arch-name">exposure</text>
+                  <text x="555" y="230" class="arch-desc">노출 현황 조회</text>
+                </g>
+              </svg>
+              </div>
+              <figcaption>
+                화살표는 의존 방향입니다. 각 모듈은 domain · application ·
+                infrastructure 계층으로 나뉩니다. HTTP API는 명세까지 작성했고
+                컨트롤러 계층은 구현 전입니다.
+              </figcaption>
+            </figure>
+
+            <ul class="l">
+              <li>
+                <strong>다른 모듈의 애그리거트는 읽기만 합니다.</strong> 바꿔야
+                하면 그 모듈의 유스케이스를 부르거나 이벤트를 발행합니다. 예를
+                들어 상품의 판매 범위가 바뀌면 product가 이벤트를 발행하고 store가
+                받아 매장 설정을 정리하며, 예약 배치도 상품을 직접 고치지 않고
+                product의 유스케이스를 호출합니다
+              </li>
+              <li>
+                <strong>애그리거트끼리는 ID로만 참조합니다.</strong> 여러
+                애그리거트를 함께 보는 판단은 application의 I/O 없는 정책
+                클래스에 모아, DB 없이 단위 테스트합니다
+              </li>
+              <li>
+                <strong>외부 서비스는 포트와 어댑터로 분리했습니다.</strong> 아직
+                없는 Store 서비스는 임시 어댑터로 두어, 서비스가 생기면 어댑터만
+                바꾸면 됩니다
+              </li>
+              <li>
+                <strong>Auth 서버는 헥사고날 구조</strong>(domain / application의
+                inbound·outbound 포트 / adapter)이고, 계층 의존·도메인 간 import
+                금지·이름 규칙을 Konsist 아키텍처 테스트로 강제합니다
+              </li>
+            </ul>
+            <p>
+              서비스 간 연동은 진행 중입니다. Catalog와 WMS가 Auth 스타터로
+              토큰을 검증하도록 토큰 계약을 맞추고 있고, 아직 연결 전입니다.
+            </p>
+          </section>
+
+          <section id="schedule">
+            <div class="shead">
+              <h2>00시 예약 변경 시스템</h2>
+            </div>
+            <p class="sdesc">
+              본사는 가격·상품명·판매 범위·옵션 구성 같은 변경을 미리 등록해
+              두고, 지정한 날 00시에 전 매장에 한 번에 적용합니다. 예약 등록부터
+              배치 적용까지 구현했습니다.
+            </p>
+
+            <div class="blk">
+              <span class="tag">모델</span>
+              <h3>필드별 타입으로 예약 값 표현</h3>
+              <p>
+                상품 12개 필드와 옵션 그룹의 옵션 목록을 예약할 수 있고, 필드마다
+                값 타입이 다릅니다(금액, ID 집합, 판매 범위, 옵션 스냅샷 등).
+                예약 값을 Kotlin <strong>sealed 계층</strong>으로 표현해, 배치
+                적용과 JSONB 직렬화가 모든 필드를 처리하지 않으면
+                <strong>컴파일 에러</strong>가 나도록 했습니다.
+              </p>
+              <ul class="l">
+                <li>
+                  JSONB에는 타입 구분자와 값을 함께 저장하고, 클래스 이름에 기대는
+                  자동 다형 직렬화 대신 코덱에 형식을 명시했습니다
+                </li>
+                <li>
+                  "같은 대상·같은 필드의 대기 예약은 1건" 규칙을 모든 예약 종류에
+                  <strong>부분 UNIQUE 인덱스</strong> 하나로 걸었습니다
+                </li>
+                <li>
+                  활성화와 단종을 별도 필드로 두어, 시즌 상품의 출시일과 단종일을
+                  함께 예약할 수 있습니다
+                </li>
+              </ul>
+            </div>
+
+            <div class="blk">
+              <span class="tag">배치</span>
+              <h3>여러 워커가 돌아도 한 번만, 실패해도 멈추지 않게</h3>
+              <ul class="l">
+                <li>
+                  대상은 짧은 트랜잭션에서 고르고, 적용은 예약 한 건마다 트랜잭션을
+                  따로 열어 <code>FOR UPDATE SKIP LOCKED</code>로 다시 잠급니다.
+                  <strong>워커 여러 개가 동시에 돌아도 같은 예약을 두 번 적용하지
+                  않습니다</strong>
+                </li>
+                <li>
+                  적용과 완료 기록을 한 트랜잭션에서 커밋해 "적용됐는데 대기로
+                  남는" 상태가 생기지 않습니다
+                </li>
+                <li>
+                  규칙 위반이면 적용을 롤백한 뒤 <strong>별도 트랜잭션에서 실패만
+                  기록</strong>합니다. DB 장애 같은 다른 예외는 대기로 남겨 다음
+                  실행에서 다시 시도합니다
+                </li>
+                <li>
+                  00시를 놓친 예약도 <code>effective_at &lt;= now</code>로 함께
+                  골라지므로, 배치를 여러 번 실행해도 안전합니다
+                </li>
+              </ul>
+              <p>
+                배치를 주기적으로 실행하는 스케줄러는 아직 연결하지 않았습니다.
+                다중 인스턴스에서 스케줄러 자체의 중복 실행을 막는 방법을 정한 뒤
+                붙일 예정입니다.
+              </p>
+            </div>
+          </section>
+
+          <section id="concurrency">
+            <div class="shead">
+              <h2>동시성 제어와 검증</h2>
+            </div>
+            <p class="sdesc">
+              관리자·점주·배치·재고 이벤트가 같은 데이터를 동시에 바꾸는 상황을
+              대상별로 정리하고, 경합의 모양에 맞는 방식으로 막았습니다. 모두
+              <strong>실제 PostgreSQL(Testcontainers) 통합 테스트</strong>로
+              확인하고, 동시 요청이 문제인 경우는 요청을 동시에 보내 재현합니다.
+            </p>
+
+            <div class="tw">
+              <table>
+                <thead>
+                  <tr>
+                    <th>상황</th>
+                    <th>처리</th>
+                    <th>검증 테스트</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>관리자가 오래된 화면으로 상품·옵션 그룹을 저장</td>
+                    <td>낙관적 잠금 (버전 조건 UPDATE, 충돌 시 409)</td>
+                    <td class="s">오래된 버전으로 저장하면 거부하고 DB 상태는 바뀌지 않는다</td>
+                  </tr>
+                  <tr>
+                    <td>같은 매장에 진열 순서 일괄 변경이 동시에 들어옴</td>
+                    <td>매장 단위 권고 잠금 <code>pg_advisory_xact_lock</code></td>
+                    <td class="s">결과는 둘 중 하나의 순서와 정확히 같다</td>
+                  </tr>
+                  <tr>
+                    <td>재고 이벤트 중복 수신 · 순서 역전</td>
+                    <td><code>last_event_at</code> 조건부 upsert</td>
+                    <td class="s">오래되었거나 같은 시각의 이벤트는 DB에서도 반영하지 않는다</td>
+                  </tr>
+                  <tr>
+                    <td>매장 설정을 동시에 처음 생성</td>
+                    <td><code>INSERT … ON CONFLICT DO UPDATE</code></td>
+                    <td class="s">매장·상품당 하나만 생긴다</td>
+                  </tr>
+                  <tr>
+                    <td>같은 이름 태그를 동시에 등록 · 변경</td>
+                    <td><code>ON CONFLICT DO NOTHING</code>, UNIQUE 위반을 409로 변환</td>
+                    <td class="s">하나만 생기고, 하나만 성공한다</td>
+                  </tr>
+                  <tr>
+                    <td>같은 옵션 그룹의 옵션 목록을 동시에 교체</td>
+                    <td>옵션 그룹 행 잠금</td>
+                    <td class="s">한쪽만 성공한다</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              처음에는 모든 테이블에 낙관적 잠금을 두려 했지만, 재고 이벤트처럼
+              순서가 중요한 곳에서는 버전 충돌로 거부하면 오히려 최신 이벤트를
+              잃습니다. 그래서 낙관적 잠금은 사람이 화면을 보다 저장하는 상품과
+              옵션 그룹에만 남기고, 나머지는 위처럼 경우별로 나눴습니다.
+            </p>
+          </section>
+
+          <section id="persistence">
+            <div class="shead">
+              <h2>리액티브 스택의 영속성 기반</h2>
+            </div>
+            <p class="sdesc">
+              WebFlux와 코루틴 위에서 R2DBC와 Exposed DSL로 DB에 접근합니다.
+              Spring Data 없이 쓰기 위해 필요한 기반을 직접 만들었습니다.
+            </p>
+            <ul class="l">
+              <li>
+                <strong>트랜잭션 경계</strong>: Spring
+                <code>@Transactional</code> 대신 application 계층의
+                <code>TransactionRunner</code>로 트랜잭션을 열고, Exposed R2DBC
+                <code>suspendTransaction</code>으로 구현했습니다. 중첩 호출은
+                바깥 트랜잭션을 이어 씁니다
+              </li>
+              <li>
+                <strong>마이그레이션</strong>: Flyway는 JDBC만 지원해서, 스타터가
+                끌어오는 JDBC 연결 풀 없이 마이그레이션만 돌도록 구성하고 연결 풀이
+                없는지 테스트로 확인합니다
+              </li>
+              <li>
+                <strong>스키마 불일치 검사</strong>: 코드의 Exposed 테이블 정의와
+                Flyway로 만든 실제 스키마가 어긋나면 테스트가 실패합니다
+              </li>
+              <li>
+                <strong>시간</strong>: 서버·DB는 UTC로 두고, 예약 적용 시각은
+                업무 시간대(Asia/Seoul) 00시를 계산해 저장합니다. 코드는 시스템
+                기본 시간대를 쓰지 않고 주입받은 <code>Clock</code>만 씁니다
+              </li>
+            </ul>
+          </section>
+
+          <section id="auth">
+            <div class="shead">
+              <h2>인증 서버와 서비스용 라이브러리</h2>
+            </div>
+            <p class="sdesc">
+              dozy-auth는 직원·점주·서비스 계정의 토큰을 발급하고, 다른 서비스가
+              토큰을 검증할 때 쓰는 라이브러리를 함께 제공합니다. 토큰 서명과
+              JWKS, 서비스용 스타터, 테스트 도구까지 구현했고, 로그인·초대 API는
+              진행 중입니다.
+            </p>
+
+            <div class="blk">
+              <span class="tag">토큰</span>
+              <h3>JWT 발급과 JWKS</h3>
+              <ul class="l">
+                <li>
+                  Spring Authorization Server 대신 Spring Security의 Nimbus로
+                  서명을 직접 구현하고, 모든 서비스가 공개키를 가져가는 JWKS
+                  엔드포인트를 제공합니다
+                </li>
+                <li>
+                  직원 한 명이 여러 서비스를 쓰므로 토큰 하나에 여러 audience를
+                  싣고, role을 <code>{audience}:{code}</code>로 구분합니다
+                </li>
+              </ul>
+            </div>
+
+            <div class="blk">
+              <span class="tag">라이브러리</span>
+              <h3>Spring MVC와 WebFlux를 모두 지원하는 스타터</h3>
+              <p>
+                WMS·Catalog·Store 서비스는 의존성과 최소 설정만 추가하면 토큰
+                검증과 role 기반 인가가 자동으로 설정됩니다. 서비스들은 WebFlux,
+                Auth 서버는 MVC라서 두 스택을 모두 지원하되,
+                <strong>검증 규칙·JWKS 조회·에러 응답은 한 벌의 코드</strong>를
+                쓰고 Spring Security와 연결하는 부분만 스택별로 나눴습니다.
+              </p>
+              <ul class="l">
+                <li>
+                  WebFlux에서는 블로킹 JWKS 조회가 이벤트 루프를 막지 않도록 서명
+                  검증을 <code>boundedElastic</code> 스케줄러에서 실행합니다
+                </li>
+                <li>
+                  서비스 개발자가 Auth 서버 없이 테스트할 수 있도록
+                  <code>@WithDozyPrincipal</code>과 테스트 토큰 발급 도구를
+                  제공합니다
+                </li>
+              </ul>
+            </div>
+          </section>
         </div>
       </div>
     </main>
