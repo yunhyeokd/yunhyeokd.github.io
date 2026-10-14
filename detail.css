@@ -69,6 +69,21 @@
 .case-study .shead h2 { margin: 0; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
 .case-study .sdesc { font-size: 0.98rem; color: var(--text); margin: 0 0 24px; max-width: 36em; }
 
+/* Dozy Coffee: service headings and their topics */
+.case-study .service-section {
+  border-top: 1px solid var(--line-strong);
+  padding-top: 24px;
+}
+.case-study .service-section > .shead h2 { font-size: 1.75rem; }
+.case-study .service-section > .service-topic { margin-top: 36px; }
+.case-study .service-topic .shead h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.case-study .service-topic .blk h4 { margin-top: 0; font-size: 1.08rem; }
+
 .case-study h3 { font-size: 1.08rem; font-weight: 700; margin: 28px 0 10px; color: var(--text-strong); }
 .case-study h4 { font-size: 0.95rem; font-weight: 700; margin: 22px 0 8px; color: var(--text-strong); }
 .case-study p { margin: 0 0 14px; color: var(--text); max-width: 38em; font-size: 0.96rem; }
