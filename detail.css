@@ -69,6 +69,11 @@
 .case-study .shead h2 { margin: 0; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
 .case-study .sdesc { font-size: 0.98rem; color: var(--text); margin: 0 0 24px; max-width: 36em; }
 
+.case-study .system-map { margin: 24px 0 30px; }
+.case-study .system-map a { display: block; }
+.case-study .system-map img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.case-study .system-map figcaption { margin-top: 10px; font-size: 0.84rem; color: var(--text-muted); }
+
 /* Dozy Coffee: service headings and their topics */
 .case-study .service-section {
   border-top: 1px solid var(--line-strong);
