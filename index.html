@@ -30,37 +30,43 @@
 
     <main>
       <section id="top" class="intro band">
-        <h1>도윤혁</h1>
-        <p class="intro-role">백엔드 개발자</p>
+        <div class="intro-grid">
+          <div class="intro-heading">
+            <p class="intro-kicker">Portfolio · Backend Developer</p>
+            <h1>도윤혁</h1>
+            <p class="intro-role">백엔드 개발자</p>
+          </div>
+          <div class="intro-main">
+            <p class="intro-lede">
+              백엔드를 중심으로, 서비스가 실제로 동작하기까지 필요한 전반을 고민하는
+              개발자입니다. API 설계부터 Docker·GCP 인프라와 CI/CD까지 직접
+              다뤄왔습니다. 최근에는 DDD·Hexagonal Architecture와 같은 시스템
+              아키텍처, MCP를 기반으로 한 AI 에이전트 활용을 공부하고 있습니다.
+            </p>
 
-        <p class="intro-lede">
-          백엔드를 중심으로, 서비스가 실제로 동작하기까지 필요한 전반을 고민하는
-          개발자입니다. API 설계부터 Docker·GCP 인프라와 CI/CD까지 직접
-          다뤄왔습니다. 최근에는 DDD·Hexagonal Architecture와 같은 시스템
-          아키텍처, MCP를 기반으로 한 AI 에이전트 활용을 공부하고 있습니다.
-        </p>
-
-        <ul id="contact" class="intro-contact">
-          <li>
-            <span>Email</span
-            ><a href="mailto:yunhyeokd@gmail.com">yunhyeokd@gmail.com</a>
-          </li>
-          <li>
-            <span>GitHub</span
-            ><a
-              href="https://github.com/yunhyeokd"
-              target="_blank"
-              rel="noopener"
-              >github.com/yunhyeokd</a
-            >
-          </li>
-        </ul>
+            <ul id="contact" class="intro-contact">
+              <li>
+                <span>Email</span
+                ><a href="mailto:yunhyeokd@gmail.com">yunhyeokd@gmail.com</a>
+              </li>
+              <li>
+                <span>GitHub</span
+                ><a
+                  href="https://github.com/yunhyeokd"
+                  target="_blank"
+                  rel="noopener"
+                  >github.com/yunhyeokd</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section id="projects" class="section">
         <h2>프로젝트</h2>
 
-        <div class="row project">
+        <div class="row project project-featured">
           <div class="row-label live">2026.05 –</div>
           <div class="row-body">
             <h3>Dozy Coffee</h3>
@@ -138,55 +144,57 @@
 
       </section>
 
-      <section id="skills" class="section facts">
-        <h2>기술</h2>
-        <div class="row">
-          <div class="row-label">Backend</div>
-          <div class="row-body">Java, Kotlin, Spring, Python</div>
-        </div>
-        <div class="row">
-          <div class="row-label">Frontend</div>
-          <div class="row-body">Vue</div>
-        </div>
-        <div class="row">
-          <div class="row-label">DB · Infra</div>
-          <div class="row-body">MySQL, PostgreSQL, Docker, GCP, Git</div>
-        </div>
-        <div class="row">
-          <div class="row-label">학습 중</div>
-          <div class="row-body">
-            MSA, MCP, Spring WebFlux, Hexagonal Architecture, Continuous
-            Deployment
+      <div class="profile-columns">
+        <section id="skills" class="section facts">
+          <h2>기술</h2>
+          <div class="row">
+            <div class="row-label">Backend</div>
+            <div class="row-body">Java, Kotlin, Spring, Python</div>
           </div>
-        </div>
-      </section>
+          <div class="row">
+            <div class="row-label">Frontend</div>
+            <div class="row-body">Vue</div>
+          </div>
+          <div class="row">
+            <div class="row-label">DB · Infra</div>
+            <div class="row-body">MySQL, PostgreSQL, Docker, GCP, Git</div>
+          </div>
+          <div class="row">
+            <div class="row-label">학습 중</div>
+            <div class="row-body">
+              MSA, MCP, Spring WebFlux, Hexagonal Architecture, Continuous
+              Deployment
+            </div>
+          </div>
+        </section>
 
-      <section id="history" class="section facts">
-        <h2>이력</h2>
-        <div class="row">
-          <div class="row-label">2026.03 – 2026.08</div>
-          <div class="row-body">KB IT's Your Life 7기</div>
-        </div>
-        <div class="row">
-          <div class="row-label">2018.02 – 2025.08</div>
-          <div class="row-body">
-            서강대학교 경영학·컴퓨터공학 <span class="sub">졸업</span>
+        <section id="history" class="section facts">
+          <h2>이력</h2>
+          <div class="row">
+            <div class="row-label">2026.03 – 2026.08</div>
+            <div class="row-body">KB IT's Your Life 7기</div>
           </div>
-        </div>
-        <div class="row">
-          <div class="row-label">자격증</div>
-          <div class="row-body">
-            정보처리기사 <span class="sub">2026년 1회</span>, SQL개발자
-            <span class="sub">제61회</span>
+          <div class="row">
+            <div class="row-label">2018.02 – 2025.08</div>
+            <div class="row-body">
+              서강대학교 경영학·컴퓨터공학 <span class="sub">졸업</span>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="row-label">어학</div>
-          <div class="row-body">
-            TOEIC Speaking Test <span class="sub">IH · 150점 · 2026.10.04</span>
+          <div class="row">
+            <div class="row-label">자격증</div>
+            <div class="row-body">
+              정보처리기사 <span class="sub">2026년 1회</span>, SQL개발자
+              <span class="sub">제61회</span>
+            </div>
           </div>
-        </div>
-      </section>
+          <div class="row">
+            <div class="row-label">어학</div>
+            <div class="row-body">
+              TOEIC Speaking Test <span class="sub">IH · 150점 · 2026.10.04</span>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <site-footer></site-footer>

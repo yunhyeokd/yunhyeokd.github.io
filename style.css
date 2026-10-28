@@ -34,7 +34,7 @@
   --brown-900: #2e241d;
   --brown-950: #1d1a15;
 
-  /* Header stone (kept from the previous palette) */
+  /* Neutral tones for header text and dialogs */
   --stone-100: #f4f3ee;
   --stone-300: #bcb8b1;
   --stone-700: #463f3a;
@@ -55,7 +55,7 @@
   --bad: var(--clay-700);
 
   /* Header */
-  --header: var(--stone-700);
+  --header: #5b4235;
   --on-header: var(--stone-100);
   --on-header-muted: var(--stone-300);
   --on-header-accent: var(--clay-300);
@@ -67,7 +67,7 @@
   --band-link-underline: var(--clay-500);
   --band-link-hover: var(--clay-800);
 
-  --max-width: 760px;
+  --max-width: 1120px;
   --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
@@ -85,7 +85,7 @@
     --mark: var(--gold-300);
     --hl: rgba(255, 203, 105, 0.25);
     --bad: var(--clay-300);
-    --header: var(--stone-800);
+    --header: #352820;
     --band: var(--olive-800);
     --on-band: var(--gold-50);
     --on-band-muted: var(--olive-200);
@@ -107,7 +107,7 @@
   --mark: var(--gold-300);
   --hl: rgba(255, 203, 105, 0.25);
   --bad: var(--clay-300);
-  --header: var(--stone-800);
+  --header: #352820;
   --band: var(--olive-800);
   --on-band: var(--gold-50);
   --on-band-muted: var(--olive-200);
@@ -535,4 +535,65 @@ site-footer { display: block; }
   .intro h1 { font-size: 2rem; }
   .intro-lede { font-size: 0.98rem; }
   .row { grid-template-columns: 1fr; }
+}
+
+/* Desktop layout: keep the original document-like palette and rules. */
+:focus-visible { outline: 2px solid var(--mark); outline-offset: 4px; }
+[id] { scroll-margin-top: 92px; }
+.reading-progress { position: fixed; top: 0; left: 0; z-index: 30; width: 100%; height: 2px; background: var(--on-header-accent); transform: scaleX(0); transform-origin: left; pointer-events: none; }
+
+.intro { padding: 72px 0 82px; }
+.intro-grid { display: grid; grid-template-columns: minmax(240px, .75fr) minmax(0, 1.25fr); gap: clamp(42px, 6vw, 90px); align-items: start; }
+.intro-kicker { margin: 0 0 26px; color: var(--on-band-muted); font-family: var(--mono); font-size: .74rem; letter-spacing: .02em; }
+.intro h1 { font-size: clamp(3.4rem, 5vw, 4.7rem); line-height: 1.12; }
+.intro-role { margin-top: 9px; font-size: 1.07rem; }
+.intro-main { padding-top: 40px; }
+.intro-lede { max-width: 37em; margin-top: 0; font-size: 1.08rem; line-height: 1.85; }
+.intro-contact { margin-top: 27px; }
+
+.section { padding-top: 70px; }
+.section h2 { margin-bottom: 28px; font-size: 1.5rem; letter-spacing: -.02em; }
+#projects .row { grid-template-columns: 168px minmax(0, 1fr); gap: 32px; }
+.project { margin: 0 -20px; padding: 27px 20px 30px; transition: background-color .2s ease; }
+.project:hover, .project:focus-within { background: var(--code-bg); }
+.project-featured { border-top-color: var(--line-strong); }
+.project h3 { font-size: 1.42rem; letter-spacing: -.02em; }
+.project .sub { font-size: .88rem; }
+.project-desc { max-width: 51em; margin-top: 11px; margin-bottom: 13px; font-size: 1rem; }
+.project-stack { font-size: .86rem; }
+.project-links { margin-top: 13px; gap: 12px 25px; font-size: .9rem; }
+.project-more::after { content: " ↗"; display: inline-block; transition: transform .2s ease; }
+.project-more:hover::after { transform: translate(2px, -2px); }
+
+.profile-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding-top: 18px; }
+.profile-columns .section { min-width: 0; }
+.profile-columns .row { grid-template-columns: 106px minmax(0, 1fr); gap: 18px; }
+#history .row { grid-template-columns: 148px minmax(0, 1fr); }
+.profile-columns .row-body { line-height: 1.65; }
+.site-footer { padding-top: 65px; }
+
+@media (max-width: 900px) {
+  .intro-grid { grid-template-columns: 1fr; gap: 0; }
+  .intro-main { padding-top: 26px; }
+  .profile-columns { grid-template-columns: 1fr; gap: 0; padding-top: 0; }
+  .profile-columns .section { padding-top: 55px; }
+  #projects .row { grid-template-columns: 132px minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 560px) {
+  .intro { padding: 34px 0 46px; }
+  .intro-kicker { margin-bottom: 20px; }
+  .intro h1 { font-size: 2.7rem; }
+  .intro-main { padding-top: 18px; }
+  .intro-lede { font-size: .98rem; }
+  .section { padding-top: 48px; }
+  .section h2 { font-size: 1.25rem; margin-bottom: 18px; }
+  #projects .row, .profile-columns .row, #history .row { grid-template-columns: 1fr; gap: 4px; }
+  .project { margin: 0 -8px; padding: 20px 8px; }
+  .project h3 { font-size: 1.2rem; }
+  .project-desc { font-size: .95rem; }
+  .profile-columns .section { padding-top: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .project, .project-more::after { transition: none; }
 }
